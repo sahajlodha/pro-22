@@ -5,8 +5,9 @@ const Constraint = Matter.Constraint;
 
 var engine, world;
 var canvas;
-var palyer, playerBase, playerArcher;
-var baseimage;
+var player, playerBase;
+
+
 
 function preload() {
   backgroundImg = loadImage("./assets/background.png");
@@ -23,30 +24,21 @@ function setup() {
   angleMode(DEGREES);
 
   var options = {
-    istatic: true
-  }
+    isStatic: true
+  };
 
-  //create player base body
-  playerBase = Bodies.rectangle(200,350,180,150,options);
-  World.add(world,playerBase);
+  playerBase = Bodies.rectangle(200, 350, 180, 150, options);
+  World.add(world, playerBase);
 
-  //create player body
-player = Bodies.rectangle(250,playerBase.position.y-160,50,180,options);
-World.add(world.player);
-
-
+  player = Bodies.rectangle(250, playerBase.position.y - 160, 50, 180, options);
+  World.add(world,player)
 }
 
 function draw() {
   background(backgroundImg);
 
-  //show the player image using image() function
-
-  //show the playerbase image using image() function
-
-
   Engine.update(engine);
-  image(playerimage,baseimage.pasition.x,playerBase.pasition.y,180,150);
+  image(baseimage,playerBase.position.x,playerBase.position.y,180,150)
   image(playerimage,player.position.x,player.position.y,50,180)
 
   // Title
@@ -55,3 +47,7 @@ function draw() {
   textSize(40);
   text("EPIC ARCHERY", width / 2, 100);
 }
+
+
+
+
